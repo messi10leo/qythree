@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+    <mirrors>
+        <mirror>
+            <id>mirror-qy</id>
+               <mirrorOf>repo-qy</mirrorOf>
+            <name>maven qy mirror</name>
+            <url>http://106.14.51.254/nexus/content/groups/public/</url>
+        </mirror>
+    </mirrors>
+
+    <servers>
+        <server>
+            <id>qy-insurance-release</id>
+            <username>deployment</username>
+            <password>123456</password>
+        </server>
+        <server>
+            <id>qy-insurance-snapshot</id>
+            <username>deployment</username>
+            <password>123456</password>
+        </server>
+    </servers>
+
+    <profiles>
+        <profile>
+            <id>repos-qy</id>
+            <repositories>
+			<repository>
+            <id>thirdparty</id>
+            <name>thirdparty</name>
+            <url>http://106.14.51.254:9001/nexus/content/repositories/thirdparty</url>
+        </repository>
+                <repository>
+                    <id>repo-qy</id>
+                    <name>local public nexus</name>
+                    <url>http://106.14.51.254/nexus/content/groups/public/</url>
+                </repository>
+                 <repository>
+                    <id>qy-insurance-release</id>
+                    <name>qy-insurance-release</name>
+                    <url>http://106.14.51.254/nexus/content/repositories/qy-insurance-release/</url>
+                </repository>
+                 <repository>
+                    <id>qy-insurance-snapshot</id>
+                    <name>qy-insurance-snapshot</name>
+                    <url>http://106.14.51.254/nexus/content/repositories/qy-insurance-snapshot/</url>
+                </repository>
+            </repositories>
+        </profile>
+
+        <!-- jdk1.8 -->
+        <profile>
+            <id>jdk1.8</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+                <jdk>1.8</jdk>
+            </activation>
+            <properties>
+                <maven.compiler.source>1.8</maven.compiler.source>
+                <maven.compiler.target>1.8</maven.compiler.target>
+                <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
+            </properties>
+        </profile>
+    </profiles>
+
+    <activeProfiles>
+        <activeProfile>repos-qy</activeProfile>
+        <activeProfile>jdk1.8</activeProfile>
+    </activeProfiles>
+
+    <localRepository> 
+        <!-- /Users/songjiawei/.m2/repository/ -->
+		C:\working\maven\m2\repository\
+ </localRepository>
+</settings>

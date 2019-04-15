@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+	<localRepository>C:\Users\sunhao\.m2\queryCheck\repository\</localRepository>
+
+	<servers>
+        <server>
+            <id>qy-insurance-release</id>
+            <username>deployment</username>
+            <password>123456</password>
+        </server>
+        <server>
+            <id>qy-insurance-snapshot</id>
+            <username>deployment</username>
+            <password>123456</password>
+        </server>
+		<server>
+			<id>nexus</id>
+			<username>nexususer</username>
+			<password>{jP6OB9tLU4EHkp8H798GxMQXpyDph81baEeXyZ6zTrY=}</password>
+		</server>
+		<server>    
+            <id>insurance-release</id>    
+            <username>nexususer</username>    
+            <password>{jP6OB9tLU4EHkp8H798GxMQXpyDph81baEeXyZ6zTrY=}</password>    
+        </server>    
+        <server>     
+            <id>insurance-snapshot</id>    
+            <username>nexususer</username>    
+            <password>{jP6OB9tLU4EHkp8H798GxMQXpyDph81baEeXyZ6zTrY=}</password>    
+        </server>    
+	</servers>
+
+	<mirrors>
+		<mirror>
+            <id>mirror-qy</id>
+               <mirrorOf>repo-qy</mirrorOf>
+            <name>maven qy mirror</name>
+            <url>http://106.14.51.254:9001/nexus/content/groups/public/</url>
+        </mirror>
+		<mirror>
+			<id>nexus</id>
+			<mirrorOf>*</mirrorOf>
+			<url>http://nexus.kyeegroup.com/content/groups/public/</url>
+		</mirror>
+		<mirror>
+			<id>insurance-release</id>
+			<mirrorOf>*</mirrorOf>
+			<url>http://nexus.kyeegroup.com/content/repositories/insurance-release/</url>
+		</mirror>
+		<mirror>
+			<id>insurance-snapshot</id>
+			<mirrorOf>*</mirrorOf>
+			<url>http://nexus.kyeegroup.com/content/repositories/insurance-snapshot/</url>
+		</mirror>
+		
+		
+	</mirrors>
+	 
+  <profiles>
+       <profile>
+            <id>repos-qy</id>
+            <repositories>
+                <repository>
+                    <id>repo-qy</id>
+                    <name>local public nexus</name>
+                    <url>http://106.14.51.254:9001/nexus/content/groups/public/</url>
+                </repository>
+                 <repository>
+                    <id>qy-insurance-release</id>
+                    <name>qy-insurance-release</name>
+                    <url>http://106.14.51.254:9001/nexus/content/repositories/qy-insurance-release/</url>
+                </repository>
+                 <repository>
+                    <id>qy-insurance-snapshot</id>
+                    <name>qy-insurance-snapshot</name>
+                    <url>http://106.14.51.254:9001/nexus/content/repositories/qy-insurance-snapshot/</url>
+                </repository>
+		<repository>
+			<id>qy1</id>
+			<name>qy2</name>
+			<url>http://106.14.51.254:9001/nexus/content/repositories/qy</url>
+		</repository>
+		<repository>
+			<id>qy3</id>
+			<name>qy4</name>
+			<url>http://106.14.51.254:9001/nexus/content/repositories/thirdparty</url>
+		</repository>
+            </repositories>
+        </profile>
+
+        <!-- jdk1.8 -->
+        <profile>
+            <id>jdk1.8</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+                <jdk>1.8</jdk>
+            </activation>
+            <properties>
+                <maven.compiler.source>1.8</maven.compiler.source>
+                <maven.compiler.target>1.8</maven.compiler.target>
+                <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
+            </properties>
+        </profile>
+    </profiles>
+
+     <activeProfiles>
+        <activeProfile>repos-qy</activeProfile>
+        <activeProfile>jdk1.8</activeProfile>
+    </activeProfiles>
+</settings>
